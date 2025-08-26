@@ -19,6 +19,21 @@ const reset = () => {
   });
 }
 
+const winCondition = (computerChoice) => {
+  win.innerHTML = `<h1>PC chose ${computerChoice}, you win!</h1>`;
+  win.classList.remove("hidden");
+};
+
+const looseCondition = (computerChoice) => {
+  loose.innerHTML = `<h1>PC chose ${computerChoice}, you lose!</h1>`;
+  loose.classList.remove("hidden");
+};
+
+const drawCondition = (computerChoice) => {
+  draw.innerHTML = `<h1>PC chose ${computerChoice}, it's a draw!</h1>`;
+  draw.classList.remove("hidden");
+};
+
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     players.forEach((player) => {
@@ -35,9 +50,9 @@ buttons.forEach((button) => {
         player.classList.remove("shake");
         reset();
         if (playerChoice === computerChoice) {
-          return document.getElementById("draw").classList.remove("hidden");
+          return drawCondition(computerChoice);
         } else {
-          return winConditions[playerChoice] === computerChoice ? win.classList.remove("hidden") : loose.classList.remove("hidden");
+          return winConditions[playerChoice] === computerChoice ? winCondition(computerChoice) : looseCondition(computerChoice);
         }
       })
     });
