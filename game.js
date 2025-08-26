@@ -43,8 +43,6 @@ buttons.forEach((button) => {
     let playerChoice = button.classList[0];
     let chooser = Math.floor(Math.random() * 3);
     let computerChoice = choices[chooser];
-    let matchup = [playerChoice, computerChoice];
-    console.log(matchup);
     players.forEach((player) => { 
       player.addEventListener("animationend", () => {
         player.classList.remove("shake");
